@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django App</title>
+  </head>
+  <body>
+    <h1>Django</h1>
+    {% if questions %}
+      <ul>
+        {% for q in questions %}
+          <li>
+            {% comment %} <a href="/polls/{{ q.id }}">{{ q.text }}</a> {% endcomment %}
+            <a href="{% url 'polls:detail' q.id %}">{{ q.text }}</a>
+            <p>{{ q.date }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No questions.</p>
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django App</title>
+    <style>
+      nav {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding: 0.25rem;
+        align-items: center;
+        border: 1px dashed black;
+      }
+      h1 {
+        font-size: 2rem;
+        font-weight: 500;
+        a {
+          text-decoration: none;
+          color: #000;
+        }
+      }
+    </style>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <nav>
+      <h1><a href="{% url 'v:index' %}">Index</a></h1>
+      <a href="{% url 'v:about' %}">about</a>
+      <a href="{% url 'v:us' %}">us</a>
+      <a href="{% url 'v:test' %}">test</a>
+    </nav>
+    <p>Welcome to the index page of my django app!</p>
+    <div id="div"></div>
+    {% block content %}
+
+    {% endblock %}
+    <script defer>
+      Plotly.newPlot('div', [{ x: [1, 2, 3, 4, 5], y: [1, 2, 3, 4, 5] }])
+    </script>
+  </body>
+</html>
